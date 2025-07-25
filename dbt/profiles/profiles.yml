@@ -1,4 +1,4 @@
-dbt:
+dbt_airbnb:
   target: dev
   outputs:
     dev:
@@ -7,6 +7,6 @@ dbt:
       user: postgres
       password: postgres
       port: 5432
-      dbname: postgres
-      schema: public
+      dbname: airbnb
+      schema: dev
       threads: 1

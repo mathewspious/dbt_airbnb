@@ -13,3 +13,10 @@ Try running the following commands:
 - Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+### Source files for the project
+- The dlt pipeline in the utils folder is used to insert the data to the data warehouse
+ * https://dbtlearn.s3.amazonaws.com/hosts.csv
+ * https://dbtlearn.s3.amazonaws.com/reviews.csv
+ * https://dbtlearn.s3.amazonaws.com/listings.csv
+
