@@ -29,6 +29,10 @@ Try running the following commands:
 - reviews.csv --> airbnb_reviews
 - listings.csv --> airbnb_listings
 
+### Data Modeling
+
+![Alt text](image.png)
+
 ### First Model creation
 - The first sets of models are created on top of the source tables created using the csv file
 - The models are materialized as view
@@ -38,3 +42,13 @@ Try running the following commands:
    - airbnb_listings -> raw_listings
 - The models are created in the models/src folder
 
+### Creating dimension models
+- The dimension models are created on top of the raw models
+- The dimension models are materialized as view
+- Model Mapping
+- src_listings --> dim_listings_cleansed
+   - Model Name : `dim_listings_cleansed.sql`
+   - Few Data cleansing is also done as part of the model creation
+      - because of the data irregularity, minimum nights can be 0 or 1. The minimum nights are set to 1 as part of data cleansing
+      - In the src table price per night is a string value with a `$` added to the numeric value. As part of cleansing the `$` sign is removed and data is converted to `NUMERIC` value
+- src_hosts --> dim_hosts_cleansed
