@@ -51,4 +51,6 @@ Try running the following commands:
    - Few Data cleansing is also done as part of the model creation
       - because of the data irregularity, minimum nights can be 0 or 1. The minimum nights are set to 1 as part of data cleansing
       - In the src table price per night is a string value with a `$` added to the numeric value. As part of cleansing the `$` sign is removed and data is converted to `NUMERIC` value
-- src_hosts --> dim_hosts_cleansed
+- src_hosts --> dim_hosts_cleansed  
+   - Model Name : `dim_hosts_cleansed.sql`
+   - Data cleansing : to make sure all the record's host_name column is not null, we have used the `COALESCE` function to set the value as `Anonymous` if the `NULL`
