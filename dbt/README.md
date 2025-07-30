@@ -54,3 +54,9 @@ Try running the following commands:
 - src_hosts --> dim_hosts_cleansed  
    - Model Name : `dim_hosts_cleansed.sql`
    - Data cleansing : to make sure all the record's host_name column is not null, we have used the `COALESCE` function to set the value as `Anonymous` if the `NULL`
+
+### Materialization
+- by default the models are materialized as views 
+- the materialization can be changed to table or view by changing the `materialized` property in project.yml file
+- View materializarion are used for models which are reffered once lke our src models
+- Table materialization are used for models which are reffered multiple times like our dimension models
