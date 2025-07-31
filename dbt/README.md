@@ -60,3 +60,26 @@ Try running the following commands:
 - the materialization can be changed to table or view by changing the `materialized` property in project.yml file
 - View materializarion are used for models which are reffered once lke our src models
 - Table materialization are used for models which are reffered multiple times like our dimension models
+- Incremental Materialization
+  This is used when data needs to be added incrementally to a db table. The materialization can be set at `profile.yml` or in the model file. We will use the model file here. Below code snippet creates our facts table with incremental matrialization. `is_incremental()` method can be used to fetch only the required data from source table
+  ```sql
+
+    {{
+        config(
+            materialized='incremental',
+            on_schema_change='fail'
+        )
+    }}
+    WITH src_reviews AS (
+        SELECT * FROM {{ ref('src_reviews') }}
+    )
+    SELECT * FROM src_reviews
+    WHERE review_text is not null
+    {% if is_incremental() %}
+    and review_date >= coalesce((select max(review_date) from {{ this }}), '1900-01-01')
+    {% endif %}
+
+  ```
+
+  The normal `dbt run` command will materialize the fct table incremetally. For complete rebuild can be done using the command `dbt run --full-refresh`
+
