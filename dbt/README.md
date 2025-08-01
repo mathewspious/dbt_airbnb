@@ -83,3 +83,8 @@ Try running the following commands:
 
   The normal `dbt run` command will materialize the fct table incremetally. For complete rebuild can be done using the command `dbt run --full-refresh`
 
+### Ephemeral Matrialization
+- Ephemeral materialization in dbt referes to a materialization strategy where a dbt model doesnot create a physical object (like view or tables) in the database. Instead, the SQL code defined within an ephmeral model is directly inlined as common table expression (CTE) into any downstream model that reference it.
+- Ephemeral materialization is useful when you want to avoid creating a physical object in the databas
+- Restrategizing our models
+    - The src tables in our project are not really needed to be matrialized as views, these models can be converted to ephemeral. Only the dimensional models are referring to it.
