@@ -88,3 +88,10 @@ Try running the following commands:
 - Ephemeral materialization is useful when you want to avoid creating a physical object in the databas
 - Restrategizing our models
     - The src tables in our project are not really needed to be matrialized as views, these models can be converted to ephemeral. Only the dimensional models are referring to it.
+
+### Source and Seeds
+- A dbt source is a reference to a raw table or view already exists in your data warehouse. you don't use dbt to create table, instead dbt is told where the table is
+- A dbt seed is a data source (eg. csv file) that you include directly in the dbt project. When you run `dbt seed` command, dbt will create a new table in the data warehouse.
+
+- download the fullmoon dates from using the curl command `curl https://dbtlearn.s3.us-east-2.amazonaws.com/seed_full_moon_dates.csv -o seeds/seed_full_moon_dates.csv`
+- run `dbt seed` command to upload the seed file to the data warehouse
