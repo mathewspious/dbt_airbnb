@@ -95,3 +95,11 @@ Try running the following commands:
 
 - download the fullmoon dates from using the curl command `curl https://dbtlearn.s3.us-east-2.amazonaws.com/seed_full_moon_dates.csv -o seeds/seed_full_moon_dates.csv`
 - run `dbt seed` command to upload the seed file to the data warehouse
+
+### Mart tables
+- Mart tables are accessible by the BI tools
+
+### dbt source files
+- In dbt, source files are a way of defining and documenting raw data tables that already exist in your data warehouse. They are written in YAML and are typically stored in the models/ directory of your dbt project.
+- dbt source files are used to document the raw data tables that already exist in your data warehous
+- once we hae the source file defined, hard coded source table reference in the src models can be replaced with the `source.yml` reference `{{source("source_name","table_name)}}`
